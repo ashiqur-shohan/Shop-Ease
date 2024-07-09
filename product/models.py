@@ -23,6 +23,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, max_length=250)
     featured = models.BooleanField(default=False)
     price = models.DecimalField(max_digits=8, decimal_places=2)
+    in_stock = models.BooleanField(default=True)
     thumbnail = models.URLField()
     description = models.TextField(null=True, blank=True, default='N/A')
     created_date = models.DateTimeField(auto_now_add=True)
@@ -33,6 +34,10 @@ class Product(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+    @property
+    def related_product(self):
+        return self.category.products.all().exclude(pk=self.pk)
 
 
 class Slider(models.Model):

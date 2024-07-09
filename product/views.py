@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from django.views import generic
 
@@ -23,5 +22,16 @@ class Home(generic.TemplateView):
         )
         return context
 
-class ProductDetails(generic.TemplateView):
+class ProductDetails(generic.DetailView):
+    model = Product
     template_name = 'product/product-details.html'
+    slug_url_kwarg = 'slug'
+
+    def get_context_data(self, **kwargs) :
+        context =  super().get_context_data(**kwargs)
+        context.update(
+            {
+                'realted_products': self.get_object().related_product
+            }
+        )
+        return context
