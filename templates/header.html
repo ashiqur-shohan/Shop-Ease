@@ -25,7 +25,7 @@
                             <ul class="sub-menu">
                                 {% comment %} custom context banano oita theke dhortesi {% endcomment %}
                                 {% for category in categories%}
-                                <li><a href="#">{{ category.title|title }}</a></li>
+                                <li><a href="{% url 'category-details' category.slug %}">{{ category.title|title }}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>

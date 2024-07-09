@@ -29,9 +29,16 @@ class ProductDetails(generic.DetailView):
 
     def get_context_data(self, **kwargs) :
         context =  super().get_context_data(**kwargs)
-        context.update(
-            {
-                'realted_products': self.get_object().related_product
-            }
-        )
+        context['realted_products']= self.get_object().related_product
+        return context
+    
+
+class CategoryDetails(generic.DetailView):
+    model = Category
+    template_name = 'product/category-details.html'
+    slug_url_kwarg = 'slug'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = self.get_object().products.all()
         return context

@@ -1,0 +1,10 @@
+asgiref
+certifi
+charset-normalizer
+Django
+idna
+pillow
+requests
+sqlparse
+tzdata
+urllib3
