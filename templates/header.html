@@ -3,11 +3,11 @@
         <div class="container-fluid">
             <div class="inner-header">
                 <div class="logo">
-                    <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                    <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
                 </div>
                 <div class="header-right">
                     <img src="{% static 'img/icons/search.png' %}" alt="" class="search-trigger">
-                    <img src="{% static 'img/icons/man.png' %}" alt="">
+                    
                     <a href="#">
                         <img src="{% static 'img/icons/bag.png' %}" alt="">
                         <span>2</span>
@@ -25,7 +25,7 @@
                             <ul class="sub-menu">
                                 {% comment %} custom context banano oita theke dhortesi {% endcomment %}
                                 {% for category in categories%}
-                                <li><a href="#">{{ category.title }}</a></li>
+                                <li><a href="#">{{ category.title|title }}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>
