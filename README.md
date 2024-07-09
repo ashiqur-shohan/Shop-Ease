@@ -1,7 +1,7 @@
 
 # Shop Ease - Ecommerce
 It is a Ecommerce website.
-live link - [text](https://shop-ease-ldly.onrender.com/)
+[live link](https://shop-ease-ldly.onrender.com/)
 
 ## Features
 
