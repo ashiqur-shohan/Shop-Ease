@@ -1,0 +1,2 @@
+custom user model for authentication
+use slug field
