@@ -2,8 +2,8 @@
 <header class="header-section">
         <div class="container-fluid">
             <div class="inner-header">
-                <div class="logo">
-                    <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                <div class="logo d-flex justify-content-center">
+                    <a href="{% url 'home' %}"><img style='width:150px' class='img-fluid mt-2' src="{% static 'img/shopEase-logo-removebg-preview.png' %}" alt=""></a>
                 </div>
                 <div class="header-right">
                     <img src="{% static 'img/icons/search.png' %}" alt="" class="search-trigger">
@@ -20,7 +20,7 @@
                 <nav class="main-menu mobile-menu">
                     <ul>
                         <li><a class="" href="{% url 'home' %}">Home</a></li>
-                        <li><a class="" href="#">Products</a></li>
+                        <li><a class="" href="{% url 'product-list' %}">Products</a></li>
                         <li><a href="#">Categories</a>
                             <ul class="sub-menu">
                                 {% comment %} custom context banano oita theke dhortesi {% endcomment %}

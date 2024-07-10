@@ -17,7 +17,7 @@
                         </div>
                         <ul class="product-controls">
                             <li data-filter="*">All</li>
-                            {% for category in categories %}
+                            {% for category in featured_categories %}
                             <li data-filter=".{{category.slug}}">{{category.title | title}}</li>
                             {% endfor %}
                         </ul>
@@ -26,14 +26,14 @@
             </div>
             <div class="row" id="product-list">
                 {% comment %} category loop start {% endcomment %}
-                {% for category in categories %}
+                {% for category in featured_categories %}
                 {% comment %} product loop start {% endcomment %}
                 {% for product in category.products.all %}
 
                 <div class="col-lg-3 col-sm-6 mix {{category.slug}}">
                     <div class="single-product-item">
                         <figure>
-                            <a href="{% url 'product-details' product.slug %}"><img style='height:220px' src="{{ product.thumbnail}}" alt=""></a>
+                            <a href="{% url 'product-details' product.slug %}"><img style='height:180px' src="{{ product.thumbnail}}" alt=""></a>
                             
                         </figure>
                         <div class="product-text">
@@ -71,7 +71,7 @@
                 <div class="col-lg-3 col-sm-6 mix">
                     <div class="single-product-item">
                         <figure>
-                            <a href="{% url 'product-details' product.slug %}"><img style='height:220px' src="{{ product.thumbnail}}" alt=""></a>
+                            <a href="{% url 'product-details' product.slug %}"><img style='height:180px' src="{{ product.thumbnail}}" alt=""></a>
                             <div class="p-status">{{product.category.title | title}}</div>
                         </figure>
                         <div class="product-text">
