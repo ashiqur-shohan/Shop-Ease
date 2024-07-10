@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Product Search {% endblock title %}
+
+{% block content %}
+
+    <!-- Page Add Section Begin -->
+     
+    <section class="page-add">
+        <div class="container">
+            <div class="">
+                <div class="">
+                    <div class="">
+                        <h2> {{products.count}} Results found for {{key}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Add Section End -->
+
+    <!-- Categories Page Section Begin -->
+    <section class="categories-page spad">
+        <div class="container">
+            {% if products.count > 0 %}
+            <div class="row">
+                {% for product in products %}
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-product-item">
+                        <a href="{% url 'product-details' product.slug  %}">
+                        <figure>
+                            <img style='height:180px' src="{{product.thumbnail}}" alt="">
+                        </figure>
+                        </a>
+                        <div class="product-text">
+                            <a href="{% url 'product-details' product.slug  %}">
+                                <h6>{{product.title | title}}</h6>
+                            </a>
+                            <p>${{product.price}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            {% include '../no-results.html' %}
+            {% endif %}
+        </div>
+    </section>
+    <!-- Categories Page Section End -->
+
+{% endblock content %}

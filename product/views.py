@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 from django.views import generic
 from django.core.paginator import(
@@ -51,13 +52,16 @@ class CategoryDetails(generic.DetailView):
 
 class CustomPaginator:
     def __init__(self,request,queryset,paginated_by):
+        # paginator class dui ta value ney queryset and goto gula data ek page a dekhabe
         self.paginator = Paginator(queryset,paginated_by)
         self.paginated_by = paginated_by
         self.queryset = queryset
+        # url theke page number ta grab kortesi. jodi url a page number na thake tahole 1 nibe
         self.page = request.GET.get('page',1)
 
     def get_queryset(self):
         try:
+            # paginator er page method er maddhome shei page number er data grab kortesi
             queryset = self.paginator.page(self.page)
         except PageNotAnInteger:
             queryset = self.paginator.page(1)
@@ -72,7 +76,7 @@ class ProductList(generic.ListView):
     model = Product
     template_name = 'product/product-list.html'
     context_object_name = 'object_list'
-    paginate_by = 1
+    paginate_by = 5
     def get_context_data(self, **kwargs) :
         context =  super().get_context_data(**kwargs)
         page_obj = CustomPaginator(self.request, self.get_queryset(),self.paginate_by)
@@ -81,4 +85,16 @@ class ProductList(generic.ListView):
         context['object_list'] = queryset
         context['paginator'] = paginator
         return context
-        
+
+class SearchProduct(generic.View):
+    def get(self, *args, **kwargs):
+        key = self.request.GET.get('key','')
+        product = Product.objects.filter(
+            Q(title__icontains=key) |
+            Q(category__title__icontains=key)
+        )
+        context = {
+            'products':product,
+            'key' : key
+        }
+        return render(self.request,'product/search-products.html',context)

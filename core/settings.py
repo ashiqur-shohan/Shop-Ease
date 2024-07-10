@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'product',
-    'user_account'
+    'user_account',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,7 @@ AUTHENTICATION_BACKENDS = (
     # custom amar banano email dara validate korbe
     'user_account.backends.EmailAuthenticationBackend'
 )
+
+#session ta koto khon porjonto thakbe sheita define kore dilm
+SESSION_COOKIE_AGE = 86400  # 24 hours
+CART_ID = 'cart'
