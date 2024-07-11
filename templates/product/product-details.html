@@ -41,7 +41,7 @@
                             
                         </ul>
                         {% if product.in_stock %}
-                        <form method = 'POST'> 
+                        <form action="{% url 'add-to-cart' product.id %}" method = 'POST'> 
                             {% csrf_token %}
                         <button type='submit' style='cursor:pointer' class="primary-btn pc-btn">Add to cart</button>
                         </form>

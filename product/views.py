@@ -1,4 +1,6 @@
+from typing import Any
 from django.db.models import Q
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views import generic
 from django.core.paginator import(
@@ -7,6 +9,8 @@ from django.core.paginator import(
     InvalidPage,
     Paginator
 )
+from cart.carts import Cart
+
 from .models import (
     Product,
     Category,
@@ -77,6 +81,7 @@ class ProductList(generic.ListView):
     template_name = 'product/product-list.html'
     context_object_name = 'object_list'
     paginate_by = 5
+
     def get_context_data(self, **kwargs) :
         context =  super().get_context_data(**kwargs)
         page_obj = CustomPaginator(self.request, self.get_queryset(),self.paginate_by)

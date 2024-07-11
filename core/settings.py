@@ -66,7 +66,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 #custom context processor built in product app
-                'product.context_processor.categories'
+                'product.context_processor.categories',
+                'cart.context_processor.cart'
             ],
         },
     },
