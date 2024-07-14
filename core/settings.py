@@ -143,3 +143,4 @@ AUTHENTICATION_BACKENDS = (
 #session ta koto khon porjonto thakbe sheita define kore dilm
 SESSION_COOKIE_AGE = 86400  # 24 hours
 CART_ID = 'cart'
+COUPON_ID = 'coupon'

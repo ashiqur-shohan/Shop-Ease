@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.sessions.models import Session
-from .models import Cupon
+from .models import Coupon
 # Register your models here.
 
 class SessionAdmin(admin.ModelAdmin):
@@ -9,4 +9,4 @@ class SessionAdmin(admin.ModelAdmin):
     list_display = ['session_key','_session_data','expire_date']
 admin.site.register(Session,SessionAdmin)
 
-admin.site.register(Cupon)
+admin.site.register(Coupon)

@@ -49,7 +49,7 @@
                         {% with product=item.product%}
                         <tr>
                             <td class="product-col">
-                                <img src="{{product.thumbnail}}" alt="">
+                                <img style='height:100px' src="{{product.thumbnail}}" alt="">
                                 <div class="p-title">
                                     <h5>{{product.title}}</h5>
                                 </div>
@@ -77,13 +77,23 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            <hr>
+                <h4 class='text-end mr-5'>
+                    <strong>
+                        Total: $ {{cart.total |floatformat:2}}
+                    </strong>
+                </h4>
+                
             </div>
             <div class="cart-btn">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="coupon-input">
-                            <input type="text" placeholder="Enter cupone code">
+                        <form action='{% url 'add-coupon' %}' method='POST' >
+                            {% csrf_token %}
+                            <div class="coupon-input">
+                            <input name='coupon' type="text" placeholder="Enter cupone code">
                         </div>
+                        </form>
                     </div>
                     <div class="col-lg-5 offset-lg-1 text-left text-lg-right">
                         <a class='text-decoration-none text-dark' href='?clear=true'>
